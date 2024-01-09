@@ -22,7 +22,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${roboto_mono.variable} font-inter`}>
+      <body className={`${inter.variable} ${roboto_mono.variable} font-inter min-h-screen`}>
         {children}
       </body>
     </html>
