@@ -5,9 +5,7 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-type PokemonApiUrl = `https://pokeapi.co/api/v2/pokemon${string}`;
-
-export async function getPokemonData(url: PokemonApiUrl) {
+export async function getPokemonData(url: string) {
   const res = await fetch(url);
   // The return value is *not* serialized
   // You can return Date, Map, Set, etc.
