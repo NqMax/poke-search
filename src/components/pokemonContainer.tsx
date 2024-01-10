@@ -35,7 +35,6 @@ export function PokemonContainer() {
       window.innerHeight + document.documentElement.scrollTop + 1 >=
       document.documentElement.scrollHeight
     ) {
-      console.log("bottom");
       setLoading(true);
       setOffset((prev) => prev + 20);
     }
@@ -53,13 +52,14 @@ export function PokemonContainer() {
           ? pokemonData.results.map((pokemon) => (
               <PokemonCard key={pokemon.name} name={pokemon.name} />
             ))
-          : Array(30)
+          : Array(20)
               .fill(0)
               .map((_, index) => <PokemonCardFallback key={index} />)}
       </div>
       {scrollable || (
         <AddButton
           onClick={() => {
+            setScrollable(true);
             setLoading(true);
             setOffset((prev) => prev + 20);
           }}
