@@ -17,3 +17,7 @@ export async function getPokemonData(url: string) {
 
   return res.json();
 }
+
+export function isScrollable() {
+  return document.documentElement.scrollHeight > window.innerHeight;
+}

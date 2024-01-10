@@ -1,8 +1,10 @@
 "use client";
-import { useState, useEffect, Suspense } from "react";
-import { getPokemonData } from "@/lib/utils";
+import { useState, useEffect } from "react";
+import { getPokemonData, isScrollable } from "@/lib/utils";
 import { PokemonCard } from "@/components/pokemonCard";
 import { PokemonCardFallback } from "@/components/fallbacks";
+import { Loader } from "@/components/loader";
+import { AddButton } from "@/components/addButton";
 
 export function PokemonContainer() {
   const [pokemonData, setPokemonData] = useState({
@@ -10,17 +12,21 @@ export function PokemonContainer() {
     results: [],
   });
   const [offset, setOffset] = useState(0);
+  const [loading, setLoading] = useState(false);
+  const [scrollable, setScrollable] = useState(true);
 
   useEffect(() => {
     async function fetchData() {
       const data = await getPokemonData(
-        `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=40`,
+        `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=20`,
       );
       setPokemonData({
         ...data,
         results: [...pokemonData.results, ...data.results],
       });
+      setLoading(false);
     }
+    setScrollable(isScrollable());
     pokemonData.next && fetchData();
   }, [offset]);
 
@@ -30,7 +36,8 @@ export function PokemonContainer() {
       document.documentElement.scrollHeight
     ) {
       console.log("bottom");
-      setOffset((prev) => prev + 40);
+      setLoading(true);
+      setOffset((prev) => prev + 20);
     }
   }
 
@@ -40,14 +47,25 @@ export function PokemonContainer() {
   }, []);
 
   return (
-    <div className="mt-3 flex flex-wrap gap-x-2 gap-y-2 w-full">
-      {pokemonData.results[0]
-        ? pokemonData.results.map((pokemon) => (
-            <PokemonCard key={pokemon.name} name={pokemon.name} />
-          ))
-        : Array(30)
-            .fill(0)
-            .map((_, index) => <PokemonCardFallback key={index} />)}
-    </div>
+    <>
+      <div className="mt-3 flex w-full flex-wrap content-center justify-between gap-x-2 gap-y-2 after:grow after:basis-40">
+        {pokemonData.results[0]
+          ? pokemonData.results.map((pokemon) => (
+              <PokemonCard key={pokemon.name} name={pokemon.name} />
+            ))
+          : Array(30)
+              .fill(0)
+              .map((_, index) => <PokemonCardFallback key={index} />)}
+      </div>
+      {scrollable || (
+        <AddButton
+          onClick={() => {
+            setLoading(true);
+            setOffset((prev) => prev + 20);
+          }}
+        />
+      )}
+      {loading && pokemonData.next && <Loader />}
+    </>
   );
 }
