@@ -21,9 +21,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <body
-        className={`${inter.variable} ${roboto_mono.variable} font-inter min-h-screen`}
+        className={`${inter.variable} ${roboto_mono.variable} min-h-screen font-roboto dark:bg-neutral-900 dark:text-neutral-100`}
       >
         {children}
       </body>

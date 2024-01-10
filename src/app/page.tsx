@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main className="container mt-2">
+      <main className="container mt-5 p-2">
         <CustomInput />
         <PokemonContainer />
       </main>
