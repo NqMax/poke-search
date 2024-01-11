@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Roboto_Mono } from "next/font/google";
+import { Header } from "@/components/header";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -23,8 +24,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body
-        className={`${inter.variable} ${roboto_mono.variable} min-h-screen font-roboto dark:bg-neutral-900 dark:text-neutral-100`}
+        className={`${inter.variable} ${roboto_mono.variable} min-h-screen font-roboto dark:bg-neutral-950 dark:text-neutral-50`}
       >
+        <Header />
         {children}
       </body>
     </html>
