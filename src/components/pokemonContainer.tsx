@@ -1,10 +1,7 @@
 "use client";
-import { useState, useEffect } from "react";
-import { isScrollable } from "@/lib/utils";
+import { useState, useEffect, useRef } from "react";
 import { PokemonCard } from "@/components/pokemonCard";
 import { PokemonCardFallback } from "@/components/fallbacks";
-import { Loader } from "@/components/loader";
-import { AddButton } from "@/components/addButton";
 import { getPokemon } from "@/lib/serverActions";
 import type { Pokemon } from "@/lib/types";
 
@@ -12,7 +9,7 @@ export function PokemonContainer() {
   const [pokemonData, setPokemonData] = useState<Pokemon>([]);
   const [offset, setOffset] = useState(0);
   const [loading, setLoading] = useState(false);
-  const [scrollable, setScrollable] = useState(true);
+  const containerRef = useRef(null);
 
   useEffect(() => {
     async function fetchData() {
@@ -20,29 +17,30 @@ export function PokemonContainer() {
       setPokemonData([...pokemonData, ...data]);
       setLoading(false);
     }
-    setScrollable(isScrollable());
     fetchData();
   }, [offset]);
-  
-  function handleScroll() {
-    if (
-      window.innerHeight + document.documentElement.scrollTop + 1 >=
-        document.documentElement.scrollHeight &&
-      offset < 1300
-    ) {
-      setLoading(true);
-      setOffset((prev) => prev + 20);
-    }
-  }
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [offset]);
+    let observer = new IntersectionObserver(
+      (entries, observer) => {
+        console.log("s")
+        if (entries[0].isIntersecting && offset < 1250) {
+          setLoading(true);
+          setOffset((prev) => prev + 50);
+        }
+      },
+      {
+        rootMargin: "0px",
+        threshold: 0.5,
+      },
+    );
+    pokemonData[0] && observer.observe(containerRef.current);
+    return () => observer.disconnect();
+  }, [pokemonData]);
 
   return (
     <>
-      <div className="mt-3 flex flex-wrap gap-x-2 gap-y-2">
+      <div className="my-3 flex flex-wrap gap-x-2 gap-y-2">
         {pokemonData[0]
           ? pokemonData.map((pokemon) => (
               <PokemonCard
@@ -51,20 +49,15 @@ export function PokemonContainer() {
                 src={pokemon.sprite}
               />
             ))
-          : Array(20)
+          : Array(50)
               .fill(0)
               .map((_, index) => <PokemonCardFallback key={index} />)}
+        {loading &&
+          Array(50)
+            .fill(0)
+            .map((_, index) => <PokemonCardFallback key={index} />)}
       </div>
-      {scrollable || (
-        <AddButton
-          onClick={() => {
-            setScrollable(true);
-            setLoading(true);
-            setOffset((prev) => prev + 20);
-          }}
-        />
-      )}
-      {loading && <Loader />}
+      {pokemonData[0] && <div className="h-12 w-full" ref={containerRef}></div>}
     </>
   );
 }
