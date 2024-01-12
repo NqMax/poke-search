@@ -34,7 +34,7 @@ export function PokemonContainer() {
         threshold: 0.5,
       },
     );
-    pokemonData[0] && observer.observe(containerRef.current);
+    pokemonData[0] && observer.observe(containerRef.current!);
     return () => observer.disconnect();
   }, [pokemonData]);
 
