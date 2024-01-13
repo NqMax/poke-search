@@ -23,7 +23,6 @@ export function PokemonContainer() {
   useEffect(() => {
     let observer = new IntersectionObserver(
       (entries, observer) => {
-        console.log("s")
         if (entries[0].isIntersecting && offset < 1250) {
           setLoading(true);
           setOffset((prev) => prev + 50);
@@ -40,7 +39,9 @@ export function PokemonContainer() {
 
   return (
     <>
-      <div className="my-3 flex flex-wrap gap-x-2 gap-y-2">
+      {/* <div className="flex flex-wrap gap-x-2 gap-y-2 place-content-center"> */}
+      {/* <div className="test my-3 grid place-content-center place-items-center gap-x-2 gap-y-2"> */}
+      <div className="relative my-3 grid grid-cols-[repeat(auto-fill,_10rem)] place-content-center gap-x-2 gap-y-2">
         {pokemonData[0]
           ? pokemonData.map((pokemon) => (
               <PokemonCard
@@ -56,8 +57,14 @@ export function PokemonContainer() {
           Array(50)
             .fill(0)
             .map((_, index) => <PokemonCardFallback key={index} />)}
+        {pokemonData[0] && (
+          <div
+            className="absolute bottom-1/4 h-12 w-full"
+            ref={containerRef}
+          ></div>
+        )}
+        {/* {pokemonData[0] && <div className="h-12 w-full" ref={containerRef}></div>} */}
       </div>
-      {pokemonData[0] && <div className="h-12 w-full" ref={containerRef}></div>}
     </>
   );
 }
