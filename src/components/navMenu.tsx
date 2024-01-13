@@ -16,23 +16,17 @@ import { MdOutlineCatchingPokemon } from "react-icons/md";
 
 export function NavMenu() {
   return (
-    <NavigationMenu>
+    <NavigationMenu className="hidden">
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>Getting Started</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <div className="flex p-6">
-              <div className="flex w-48 flex-col gap-y-2 rounded-md bg-neutral-800 p-6">
-                <MdOutlineCatchingPokemon className="text-red-500" />
-                <div className="text-lg font-medium">Poke/Search</div>
-                <p className="text-sm text-neutral-400 leading-tight ">
-                  Search, discover, and learn about your favorite Pokémon. Find
-                  detailed information, including stats, abilities, types, and
-                  evolutions.
-                </p>
-              </div>
-            </div>
-          </NavigationMenuContent>
+          <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+            Pokémon
+          </NavigationMenuLink>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+            Berries
+          </NavigationMenuLink>
         </NavigationMenuItem>
         <NavigationMenuItem>
           <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
@@ -44,6 +38,22 @@ export function NavMenu() {
               GitHub
             </Link>
           </NavigationMenuLink>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <NavigationMenuTrigger>About</NavigationMenuTrigger>
+          <NavigationMenuContent>
+            <div className="flex p-6">
+              <div className="flex w-48 flex-col gap-y-2 rounded-md bg-neutral-800 p-6">
+                <MdOutlineCatchingPokemon className="text-red-500" />
+                <div className="text-lg font-medium">Poke/Search</div>
+                <p className="text-sm leading-tight text-neutral-400 ">
+                  Search, discover, and learn about your favorite Pokémon. Find
+                  detailed information, including stats, abilities, types, and
+                  evolutions.
+                </p>
+              </div>
+            </div>
+          </NavigationMenuContent>
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>
