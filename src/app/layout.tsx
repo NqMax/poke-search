@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body
-        className={`${inter.variable} ${roboto_mono.variable} min-h-screen font-roboto dark:bg-neutral-950 dark:text-neutral-50`}
+        className={`${inter.variable} ${roboto_mono.variable} min-h-screen font-inter dark:bg-neutral-950 dark:text-neutral-50`}
       >
         <Header />
         {children}

@@ -1,10 +1,9 @@
-import Image from "next/image";
-import Pikachu from "/public/pikachu.svg";
+import { PokemonCarousel } from "@/components/pokemonCarousel";
 
 export default function Home() {
   return (
-    <main className="container flex h-[calc(100vh-4.063rem)] items-center justify-center p-2">
-      <div className="flex w-fit flex-col gap-y-20">
+    <main className="container flex min-h-[calc(100vh-4.063rem)] items-center justify-center p-8">
+      <div className="flex flex-col gap-y-28">
         {/* Title */}
         <section className="flex flex-col items-center justify-center gap-y-4">
           <h1 className="text-center text-3xl font-bold tracking-tight md:text-5xl lg:text-6xl">
@@ -14,15 +13,7 @@ export default function Home() {
             Discover, explore, and learn about Pokémon in a whole new way.
           </h2>
         </section>
-        {/* Container */}
-        <div className="relative h-72 rounded-md dark:bg-neutral-800">
-          <Image
-            src={Pikachu}
-            alt="Pikachu Figurine"
-            height={80}
-            className="absolute -top-[5rem] right-0 -z-10"
-          />
-        </div>
+        <PokemonCarousel />
       </div>
     </main>
   );
