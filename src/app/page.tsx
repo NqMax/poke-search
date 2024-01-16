@@ -3,7 +3,7 @@ import { PokemonCarousel } from "@/components/pokemonCarousel";
 export default function Home() {
   return (
     <main className="container flex min-h-[calc(100vh-4.063rem)] items-center justify-center p-8">
-      <div className="flex flex-col gap-y-28">
+      <div className="flex flex-col items-center gap-y-28">
         {/* Title */}
         <section className="flex flex-col items-center justify-center gap-y-4">
           <h1 className="text-center text-3xl font-bold tracking-tight md:text-5xl lg:text-6xl">
