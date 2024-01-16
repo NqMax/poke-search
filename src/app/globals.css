@@ -109,4 +109,17 @@
     -webkit-filter: brightness(calc((var(--hyp) * 0.5) + 0.8)) contrast(1.6)
       saturate(1.4);
   }
+
+  @keyframes slide {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+
+  .slide {
+    animation: 20s slide infinite linear;
+  }
 }
