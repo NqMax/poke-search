@@ -58,7 +58,7 @@ export function PokemonContainer() {
             .map((_, index) => <PokemonCardFallback key={index} />)}
         {pokemonData[0] && (
           <div
-            className="absolute bottom-1/4 h-12 w-full"
+            className="absolute bottom-36 h-12 w-full"
             ref={containerRef}
           ></div>
         )}
