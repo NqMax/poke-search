@@ -7,7 +7,7 @@ export function SearchInput() {
       <Label htmlFor="pokemon-search" className="">
         Search for a Pokémon!
       </Label>
-      <Input id="pokemon-search" placeholder="Search Pokémon..."/>
+      <Input id="pokemon-search" placeholder="..."/>
     </div>
   );
 }

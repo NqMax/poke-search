@@ -5,7 +5,6 @@ function getRandomPokemon() {
 }
 
 export function getRandomPokemonArray() {
-  console.log(pokemon.length)
   return Array(7)
     .fill(0)
     .map(() => {

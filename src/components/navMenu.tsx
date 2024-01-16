@@ -11,21 +11,19 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import Link from "next/link";
-import { SiPokemon } from "react-icons/si";
 import { MdOutlineCatchingPokemon } from "react-icons/md";
 
 export function NavMenu() {
   return (
-    <NavigationMenu className="hidden">
+    <NavigationMenu className="hidden sm:flex">
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-            Pokémon
-          </NavigationMenuLink>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-            Berries
+          <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
+            <Link
+              href="/pokemon"
+            >
+              Pokemon
+            </Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
         <NavigationMenuItem>
