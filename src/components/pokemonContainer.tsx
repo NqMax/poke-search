@@ -18,13 +18,14 @@ export function PokemonContainer({
     next: null,
     pokemon: [],
   });
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const containerRef = useRef(null);
 
   useEffect(() => {
     async function fetchData() {
       const data = await getPokemon(query, 0);
       setPokemonData(data);
+      setLoading(false);
     }
     fetchData();
   }, [query]);
@@ -36,11 +37,13 @@ export function PokemonContainer({
         ...data,
         pokemon: [...pokemonData.pokemon, ...data.pokemon],
       });
+      setLoading(false);
     }
 
     let observer = new IntersectionObserver(
       (entries, observer) => {
         if (entries[0].isIntersecting) {
+          setLoading(true);
           fetchData();
         }
       },
@@ -67,13 +70,12 @@ export function PokemonContainer({
         ))}
         {pokemonData.next && (
           <div
-            className="absolute bottom-32 h-12 w-full bg-white"
+            className="absolute bottom-32 h-12 w-full"
             ref={containerRef}
           />
         )}
       </div>
       {loading && <Loader />}
-      <Loader />
     </>
   );
 }

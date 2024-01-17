@@ -1,7 +1,7 @@
-import { pokemon } from "@/lib/pokemon";
+import { pokemonList } from "@/lib/pokemon";
 
 function getRandomPokemon() {
-  return pokemon[Math.floor(Math.random() * 1282)];
+  return pokemonList[Math.floor(Math.random() * 1282)];
 }
 
 export function getRandomPokemonArray() {
