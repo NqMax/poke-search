@@ -15,6 +15,7 @@ export function CarouselPokemonCard({
         alt={`${name} pokemon artwork`}
         width={100}
         height={100}
+        priority
       />
       <div className="text-center">{name}</div>
       <div className="cardShine absolute h-40 w-40"></div>

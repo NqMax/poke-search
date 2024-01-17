@@ -3,12 +3,18 @@ import Illusion from "/public/illusion.webp";
 import { SearchInput } from "@/components/searchInput";
 import { PokemonContainer } from "@/components/pokemonContainer";
 
-export default function PokemonHome() {
+export default function PokemonHome({
+  searchParams,
+}: {
+  searchParams?: {
+    query?: string;
+  };
+}) {
   return (
     <main className="container mt-5 p-2">
       <SearchInput />
-      <PokemonContainer />
-      <Image src={Illusion} alt="Pokémon Logo" className="hidden" />
+      <PokemonContainer searchParams={searchParams} />
+      <Image src={Illusion} alt="Pokémon Logo" className="hidden" priority />
     </main>
   );
 }
