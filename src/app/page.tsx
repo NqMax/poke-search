@@ -17,12 +17,6 @@ export default function Home() {
         </section>
         <PokemonCarousel />
       </div>
-      <Image
-        src={Illusion}
-        alt="Pokémon Card Background"
-        className="hidden"
-        priority
-      />
     </main>
   );
 }
