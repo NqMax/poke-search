@@ -14,7 +14,7 @@ export default function PokemonHome({
     <main className="container mt-5 p-2">
       <SearchInput />
       <PokemonContainer searchParams={searchParams} />
-      <Image src={Illusion} alt="Pokémon Logo" className="hidden" priority />
+      <Image src={Illusion} alt="Pokémon Card Background" className="hidden" priority />
     </main>
   );
 }
