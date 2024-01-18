@@ -1,5 +1,3 @@
-import Image from "next/image";
-import Illusion from "/public/illusion.webp";
 import { PokemonCarousel } from "@/components/pokemonCarousel";
 
 export default function Home() {
@@ -17,7 +15,6 @@ export default function Home() {
         </section>
         <PokemonCarousel />
       </div>
-      <Image src={Illusion} alt="Pokémon Card Background" className="hidden" priority />
     </main>
   );
 }
