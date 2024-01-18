@@ -1,5 +1,7 @@
 "use client";
 import { Label } from "@/components/ui/label";
+import Image from "next/image";
+import Eevee from "/public/wobbuffet.svg";
 import { Input } from "@/components/ui/input";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
@@ -23,16 +25,29 @@ export function SearchInput() {
   }, 300);
 
   return (
-    <div className="flex flex-col gap-y-2">
-      <Label htmlFor="pokemon-search" className="">
+    <div className="mx-auto mb-6 flex flex-col items-center gap-y-12 sm:gap-y-6">
+      {/* <Label htmlFor="pokemon-search" className="w-fit">
         Search for a Pokémon!
-      </Label>
-      <Input
-        id="pokemon-search"
-        placeholder="..."
-        onChange={(e) => handleSearch(e.target.value)}
-        defaultValue={searchParams.get("q")?.toString()}
-      />
+      </Label> */}
+      <h1 className="text-center text-3xl font-bold tracking-tight md:max-w-none max-w-[21.5rem]">
+        Discover the World of Pokémon
+      </h1>
+      <div className="relative w-full xl:w-3/5">
+        <Input
+          id="pokemon-search"
+          placeholder="Search for a Pokémon..."
+          className="peer"
+          onChange={(e) => handleSearch(e.target.value)}
+          defaultValue={searchParams.get("q")?.toString()}
+        />
+        <Image
+          src={Eevee}
+          alt="Wobbuffet Figurine"
+          height={80}
+          className="absolute -top-[3rem] right-0 -z-10 transition-all sm:peer-focus:-top-[5rem]"
+          priority
+        />
+      </div>
     </div>
   );
 }
