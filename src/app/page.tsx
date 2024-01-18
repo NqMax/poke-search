@@ -1,3 +1,5 @@
+import Image from "next/image";
+import Illusion from "/public/illusion.webp";
 import { PokemonCarousel } from "@/components/pokemonCarousel";
 
 export default function Home() {
