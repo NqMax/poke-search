@@ -34,7 +34,7 @@ export function SearchInput() {
           placeholder="Search for a Pokémon..."
           className="peer"
           onChange={(e) => handleSearch(e.target.value)}
-          defaultValue={searchParams.get("q")?.toString()}
+          defaultValue={searchParams.get("query")?.toString()}
         />
         <Image
           src={Eevee}
