@@ -1,5 +1,4 @@
 "use client";
-import { Label } from "@/components/ui/label";
 import Image from "next/image";
 import Eevee from "/public/wobbuffet.svg";
 import { Input } from "@/components/ui/input";
@@ -26,9 +25,6 @@ export function SearchInput() {
 
   return (
     <div className="mx-auto mb-6 flex flex-col items-center gap-y-12 sm:gap-y-6">
-      {/* <Label htmlFor="pokemon-search" className="w-fit">
-        Search for a Pokémon!
-      </Label> */}
       <h1 className="text-center text-3xl font-bold tracking-tight md:max-w-none max-w-[21.5rem]">
         Discover the World of Pokémon
       </h1>
