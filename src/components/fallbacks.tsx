@@ -1,5 +1,5 @@
 import Image from "next/image";
-import PikachuSilhouette from "/public/pikachu-silhouette.png";
+import PikachuSilhouette from "@/public/pikachu-silhouette.png";
 
 export function PokemonCardFallback() {
   return (

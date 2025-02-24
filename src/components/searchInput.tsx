@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import Eevee from "/public/wobbuffet.svg";
+import Eevee from "@/public/wobbuffet.svg";
 import { Input } from "@/components/ui/input";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";

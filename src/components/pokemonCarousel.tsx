@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Pikachu from "/public/pikachu.svg";
+import Pikachu from "@/public/pikachu.svg";
 import { CarouselPokemonCard } from "@/components/carouselPokemonCard";
 
 const pokemon = [
